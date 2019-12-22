@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Order Results";
+}
+@model ctl.Models.ResultsViewModel
+
+<h2>@(Model.Filename != null ? $"{Model.Filename} Order Results" : "Order File Expired")</h2>
+
+<div id="gridContainer"></div>
+
+@section Scripts {
+<script>
+    $(document).ready(function(){
+         $('#gridContainer').dxDataGrid({
+            dataSource: '/Home/GetResultData',
+            paging: {
+                pageSize: 10
+            },
+            columnAutoWidth: true
+        });
+    })
+</script>
+}
